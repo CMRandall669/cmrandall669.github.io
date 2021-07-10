@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width" />
         <title>Connor Randall</title>
-        <link rel="stylesheet" type="text/css" href="portfolio.css">
+        <link rel="stylesheet" type="text/css" href="./css/portfolio.css">
     </head>
     <!--Body-->
     <body class="Background">
@@ -12,9 +12,10 @@
     <!--NAVBAR-->
     <div class="Navbar">
         <a class="active" href="#Home">Home</a>
+        <a href="#Slideshow">Slideshow</a>
         <a href="#About">About</a>
         <a href="#GitHub">GitHub</a>
-        <a href="#Contact">Contact</a>
+        <a onclick="openForm()" ondblclick="closeForm()">Contact</a>
     </div>
 
     <!--Breaks inserted to add space between navbar and the first heading-->
@@ -26,7 +27,7 @@
         <video autoplay muted loop id="Typing_Video"
             <source src="images/video/Typing.mp4" type="video/mp4">
             <!--Display message if video fails to run-->
-            Your browser does not support HTML5 video.css
+            Your browser does not support HTML5 video
         </video>
     </div>
 
@@ -43,11 +44,83 @@
                 <br>
                 <br> My name is Connor Randall. Welcome to my portfolio website. On it, I will tell you about my background and experience.
                 <br>
-                <br>Thank you for stopping by and enjoy!
+                <br>Please reach out and contact me if you have any questions.
+                <br>
+                <br>Thank you for stopping by and enjoy! 
             </p>
         </strong>
     </div>
 
+    <!--Slideshow Section Added in-->
+    <div id="Slideshow">
+            <div id="Slideshow_Background"> 
+                <div id="Slideshow_Container">
+                    <!-- Slide 1 of 8 -->
+                    <div class="mySlides fade">
+                        <img class="Slideshow_Images" src="images/SquarePersonal.jpg" alt="Picture of me!">
+                        <div class="text">I'm ready and excited to assist on your projects!</div>
+                    </div>
+                    <!-- Slide 2 of 8 -->
+                    <div class="mySlides fade">
+                        <img class="Slideshow_Images" src="images/HTML_CSS_and_JavaScript.jpeg" alt="HTML, CSS, and JS logos"> 
+                        <div class="text">I am a full-stack software developer,<br> trained in:<br>HTML, CSS, JavaScript,</div>
+                    </div>
+                    <!-- Slide 3 of 8 -->
+                    <div class="mySlides fade">
+                        <img class="Slideshow_Images" src="images/Python.png" alt="Python logo">
+                        <div class="text">the popular programming language Python,</div>
+                    </div>
+                    <!-- Slide 4 of 8 -->
+                    <div class="mySlides fade">
+                        <img class="Slideshow_Images" src="images/C_Sharp_and_Dot_NET.png" alt="C# logo">
+                        <div class="text">C#, .NET Framework, ASP.NET, MVC, </div>
+                    </div>
+                    <!-- Slide 5 of 8 -->
+                    <div class="mySlides fade">
+                        <img class="Slideshow_Images" src="images/SQL_and_Database.jpg" alt="SQL logo"> 
+                        <div class="text">back end development, databases and SQL.</div>
+                    </div>
+                     <!-- Slide 6 of 8 -->
+                    <div class="mySlides fade">
+                        <img class="Slideshow_Images" src="images/UnitySquare.jpg" alt="Unity Logo"> 
+                        <div class="text">Experienced with game development tools such as Unity,</div>
+                    </div>
+                     <!-- Slide 7 of 8 -->
+                    <div class="mySlides fade">
+                        <img class="Slideshow_Images" src="images/UnrealSquare.jpg" alt="Unreal Logo"> 
+                        <div class="text">and the very popular Unreal Engine.</div>
+                    </div>
+                    <!-- Slide 8 of 8 -->
+                    <div class="mySlides fade">
+                        <img class="Slideshow_Images" src="images/ContactSquare.jpg" alt="Replace with a picture of your choosing"> 
+                        <div class="text"><a class="white-text" onclick="openForm()" href="#Contact">Contact me now!</a></div> 
+                    </div>
+
+                    <!-- Previous and next buttons -->
+                    <a class="Previous" onclick="plusSlides(-1)">&#10094;</a>
+                    <a class="Next" onclick="plusSlides(1)">&#10095;</a>
+                </div>
+                <br>
+                <!--Previous and Next buttons-->
+                <a class="Previous" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="Next" onclick="plusSlides(1)">&#10095;</a>
+            </div>
+            <br><!--Space between Slideshow images and dots -->
+        
+            <!--Slideshow dots-->
+            <div style="text-align:center">
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlides(2)"></span>
+                <span class="dot" onclick="currentSlides(3)"></span>
+                <span class="dot" onclick="currentSlides(4)"></span>
+                <span class="dot" onclick="currentSlides(5)"></span>
+                <span class="dot" onclick="currentSlides(6)"></span>
+                <span class="dot" onclick="currentSlides(7)"></span>
+                <span class="dot" onclick="currentSlides(8)"></span>
+            </div>
+        </div>
+    </div>
+    
     <!--About Section-->
     <div class="Row" id="About">
         <!--Left Column-->
@@ -56,13 +129,12 @@
         </div>
         <!--Right Column-->
         <div class="Column_1">
-            <h1>ABOUT</h1>
+            <h1>Who I am.</h1>
             <p>
-                I am a software developer who loves to code! I have a passion for puzzle solving and getting to the bottom of a problem. 
+                I am a software developer who loves to aseemble and build things piece by piece. ! I have a passion for puzzle solving and getting to the bottom of a problem. 
                 <br>
                 <br>I am a graduate of <a href="https://www.learncodinganywhere.com" target="_blank">The Tech Academy</a>’s Software Developer Boot Camp, and trained and experienced in the following web and programming languages: HTML, CSS, JavaScript, SQL, C# and more. 
                 <br>
-                <br>I am a full-stack developer and would love to work with you on your projects! <a href="#Contact">Contact</a> me below!
             </p>
         </div>
     </div>
@@ -83,34 +155,39 @@
             <a href="https://github.com/CMRandall669" target="_blank"><img src="images/GitHub.png" alt="GitHub Logo"></a>
         </div>
     </div>
+    <!--END GITHUB -->
 
-    <!--Contact section-->
-    <div class="Row" id="Contact">
-        <!--contact image, left column-->
-        <div class="Column_2 Column_tall">
-            <img src="images/contact.jpg" alt="Contact_Image">
+    <!--CONTACT SECTION-->
+    <div id="Contact">
+           <button onclick="openForm()" class="Pop_Up_Button">CONTACT</button>
+           <div class="form-popup" id="myForm">
+            <form action="https://formspree.io/f/mleabqwv" method="POST" class="form-container">
+                <h1>Contact</h1>
+                    <label for="name"><b>Name</b></label>
+                      <input type="text" placeholder="Type your name here" name="name" required>
+                    <label for="phone"><b>Phone</b></label>
+                      <input type="text" placeholder="Type your phone number here" name="phone">
+                    <label for="email"><b>Email</b></label>		
+                      <input type="text" placeholder="Type your email address here" name="email" required>
+                    <label for="message"><b>Message</b></label>
+                      <input type="text" placeholder="Type your message here" name="message">
+         
+                    <button type="submit" class="btn">SUBMIT</button>
+                    <button type="button" class="btn cancel" onclick="closeForm()">CLOSE</button>
+                </form>
+           </div>
         </div>
-        <!--Contact image, right column-->
-        <div class="Column_1 Column_tall">
-            <h1>Contact</h1>
-            <form action="https://formspree.io/f/mleabqwv" method="post">
-                <label>Name</label>
-                    <input type="text" placeholder="Please enter your name">
-                <label>Email:</label>
-                    <input type="text" id="Email" name="Email" placeholder="Please enter your email here">
-                <label>Message:</label>
-                    <input type="text" id="Message" name="Message" placeholder="Please write your message here">
-                    <input type="submit" id="SUBMIT">
-            </form>
-        </div>
-    </div>
+    <!--END CONTACT SECTION-->
 
-        <!--Footer section-->
+        <!--FOOTER SECTION-->
         <footer>
             <p>
-                <p class="Center">Website developed by Connor Randall., &nbsp;</p>
+                <p class="center">Website developed and styled by Connor Randall. Thanks for stopping by! &nbsp;</p>
                 <br>
             </p>
         </footer>
+        <!--END FOOTER SECTION-->
+
+        <script src="JS/portfolio.js"></script>
     </body>
 </html>
