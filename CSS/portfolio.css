@@ -54,7 +54,7 @@ p {
     font-family: Perpetua, Rockwell Extra Bold;
     text-align: justify;
     letter-spacing: .1vw;
-    font-size: 1.5vw;
+    font-size: 18px;
     padding-left: 1vw;
     padding-right: 1vw;
     color: #fff;
@@ -88,7 +88,7 @@ p:hover {
 /* Anchor Elements */
 
 a {
-    color: blue;
+    color: #73f5aa;
     cursor: pointer;
     text-decoration: underline;
 }
@@ -134,7 +134,7 @@ img:hover {
 
 footer {
     padding: 2%;
-    background-color: #86738c;
+    background-color: #505f59;
 }
 
 
@@ -400,7 +400,7 @@ footer {
     width: 50%;
     padding: 1.6%;
     height: 450px;
-    background-color: #86738c;
+    background-color: #505f59;
     border: 3px solid rgb(85, 85, 85);
 }
 
