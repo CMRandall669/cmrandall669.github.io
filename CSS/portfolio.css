@@ -29,22 +29,34 @@ body.fade-out {
 h1 {
     color: #fff;
     font-smooth: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
 }
 
 h1:hover {
     filter: grayscale(5%);
     transform: scale(1.1);
-    transition: transform 1s;
+    transition: transform .5s;
 }
 
+.dev_subtitle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    font-size: medium;
+}
 
 /* Styling for portfolio title text */
 
 .white-text {
     color: #fff;
     /* This is used to change the color of the Portfolio Title text */
-    padding-top: 10vh;
+    
     /* Adds padding (equal to 10% of the viewport height) to the top of the Portfolio Title text */
+    text-align: center;
 }
 
 
@@ -52,7 +64,7 @@ h1:hover {
 
 p {
     font-family: Perpetua, Rockwell Extra Bold;
-    text-align: justify;
+    text-align: center;
     letter-spacing: .1vw;
     font-size: 18px;
     padding-left: 1vw;
@@ -70,7 +82,7 @@ p:hover {
 }
 
 
-/* Center class - this applies to all elements with the clss "center" */
+/* Center class - this applies to all elements with the class "center" */
 
 .center {
     text-align: center;
@@ -79,10 +91,10 @@ p:hover {
 
 /* Center class hover effects */
 
-.center:hover {
+/* .center:hover {
     transition: transform 2s;
     transform: scale(1.1);
-}
+} */
 
 
 /* Anchor Elements */
@@ -113,10 +125,11 @@ img {
 }
 
 
+
 /* image element hover effect */
 
 img:hover {
-    filter: grayscale(5%);
+    filter: grayscale(3%);
 }
 
 
@@ -420,6 +433,14 @@ footer {
     height: 450px;
     background-color: #4d4d4d;
     border: 3px solid rgb(85, 85, 85);
+}
+
+.Column_3 {
+    float: left;
+    width: 100%;
+    padding: .75%;
+    height: 500px;    
+    
 }
 
 .Row:after {
