@@ -1,203 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width" />
-        <title>Connor Randall</title>
-        <link rel="stylesheet" type="text/css" href="CSS/portfolio.css">
-    </head>
-    <!--Body-->
-    <body class="Background">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Connor Randall — Full-Stack Engineer</title>
+<meta name="description" content="Full-stack engineer who owns enterprise web systems end to end — from database schema through .NET services and messaging to React front ends.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
 
-    <!--NAVBAR-->
-    <div class="Navbar">
-        <a class="active" href="#Home">Home</a>
-        <a href="#Slideshow">Skills</a>
-        <a href="#About">About</a>
-        <a href="#GitHub">Projects</a>
-        <a onclick="openForm()" ondblclick="closeForm()">Contact</a>
+<header class="topbar">
+  <div class="wrap">
+    <span class="id">Connor Randall</span>
+    <nav>
+      <a href="#work">Work</a>
+      <a href="#approach">Approach</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <h1>I take features from the database to the deployed UI.</h1>
+    <p class="thesis">Full-stack engineer with ~5 years building and owning enterprise web systems end to end. I&rsquo;m not a front-end developer who tolerates a thin API &mdash; I own the whole path, so a feature ships as <b>one engineer&rsquo;s work instead of a chain of handoffs.</b></p>
+
+    <div class="path mono">
+      <span class="node">MariaDB schema</span><span class="arw">&rarr;</span>
+      <span class="node">.NET API / worker</span><span class="arw">&rarr;</span>
+      <span class="node">RabbitMQ</span><span class="arw">&rarr;</span>
+      <span class="node">REST</span><span class="arw">&rarr;</span>
+      <span class="node">React / TypeScript</span>
     </div>
 
-    <!--Breaks inserted to add space between navbar and the first heading-->
-    <br>
-    <br>
+    <div class="facts">
+      <div><div class="lab">Role</div><div class="val">Application Developer II</div></div>
+      <div><div class="lab">Experience</div><div class="val">~5 years</div></div>
+      <div><div class="lab">Based</div><div class="val">Mount Laurel, NJ &middot; Philadelphia area</div></div>
+      <div><div class="lab">Platform</div><div class="val">OpenShift &middot; CI/CD &middot; Docker</div></div>
+    </div>
+  </div>
+</div>
 
-    <!--background video-->
-    <div id="Home">
-        <video autoplay muted loop id="Typing_Video"
-            <source src="images/video/text.mp4" type="video/mp4">
-            <!--Display message if video fails to run-->
-            Your browser does not support HTML5 video
-        </video>
-        
+<div class="wrap">
 
+  <section id="work">
+    <div class="sec-head"><h2>Selected work</h2><span class="rule"></span></div>
+    <p class="sec-sub">Case studies from production systems I own at NFI Industries. Each describes my own engineering contribution at an architectural level; proprietary code, infrastructure configuration, and customer data are intentionally excluded.</p>
+
+    <!-- Customer Health -->
+    <div class="entry">
+      <div class="kind">Re-architecture</div>
+      <div>
+        <h3>Customer Health — real-time integration monitoring</h3>
+        <p>Rebuilt a per-customer health dashboard from a <b>client-side bottleneck</b> — which fired a separate API call per signal for every customer and aggregated in the browser — into a <b>server-side worker</b> that precomputes health on a schedule, so the front end does a single read.</p>
+        <div class="metrics">
+          <div class="metric"><div class="n mono">~350</div><div class="l">customers monitored</div></div>
+          <div class="metric"><div class="n mono">5&nbsp;min</div><div class="l">refresh cycle</div></div>
+          <div class="metric"><div class="n mono">N&nbsp;&rarr;&nbsp;1</div><div class="l">per-customer calls &rarr; single read</div></div>
+        </div>
+        <div class="stack">
+          <span class="tag">MariaDB</span><span class="tag">.NET 6 Worker</span><span class="tag">RabbitMQ</span>
+          <span class="tag">REST API</span><span class="tag">React / TypeScript</span><span class="tag">EF Core</span>
+        </div>
+        <div class="readlinks">
+          <a href="work/customer-health.html">Read case study</a>
+          <a class="pdf" href="assets/CustomerHealth_CaseStudy.pdf">Download PDF</a>
+        </div>
+      </div>
     </div>
 
-    <!--Video Text-->
-    <div class="Video_Text">
-        
-        <strong>
-            <h1 class="White-text">Connor Randall</h1>
-            <h2 class="dev_subtitle">Software Developer</h2>
-
-            <div class="Column_3">
-                <img src="./images/headshot.JPG" alt="not found">
-            </div>
-            <p class="center">
-                <br> Hi! My name is Connor Randall. I am a software developer ready to assist with whatever projects you have. 
-                <br>
-                <br>Please reach out and contact me!.
-                <br>
-                <br>Thank you for stopping by! 
-            </p>
-        </strong>
+    <!-- API consolidation -->
+    <div class="entry">
+      <div class="kind">Optimization</div>
+      <div>
+        <h3>Transaction API consolidation</h3>
+        <p>Collapsed two parallel transaction endpoints of ~1,500 lines each into a single <b>direction-parameterized API</b> of ~250 lines returning inbound, outbound, or combined results — roughly a 90% reduction in code, and far easier to diagnose.</p>
+        <div class="metrics">
+          <div class="metric"><div class="n mono">~90%</div><div class="l">less code</div></div>
+          <div class="metric"><div class="n mono">2&nbsp;&rarr;&nbsp;1</div><div class="l">endpoints consolidated</div></div>
+          <div class="metric"><div class="n mono">+&nbsp;Combined</div><div class="l">new capability</div></div>
+        </div>
+        <div class="stack">
+          <span class="tag">C# / .NET</span><span class="tag">REST API</span><span class="tag">MariaDB</span>
+        </div>
+        <div class="readlinks">
+          <a href="work/api-consolidation.html">Read case study</a>
+          <a class="pdf" href="assets/APIConsolidation_CaseStudy.pdf">Download PDF</a>
+        </div>
+      </div>
     </div>
 
-    <!--Slideshow Section Added in-->
-    <div id="Slideshow">
-            <div id="Slideshow_Background"> 
-                <div id="Slideshow_Container">
-                    <!-- Slide 1 of 8 -->
-                    <div class="mySlides fade">
-                        <img class="Slideshow_Images" src="images/headshot2.JPG" alt="Picture of me!">
-                        <div class="text">I'm ready and excited to assist on your projects!</div>
-                    </div>
-                    <!-- Slide 2 of 8 -->
-                    <div class="mySlides fade">
-                        <img class="Slideshow_Images" src="images/HTML_CSS_and_JavaScript.jpeg" alt="HTML, CSS, and JS logos"> 
-                        <div class="text">I am a full-stack software developer,<br> trained in:<br>HTML, CSS, JavaScript,</div>
-                    </div>
-                    <!-- Slide 3 of 8 -->
-                    <div class="mySlides fade">
-                        <img class="Slideshow_Images" src="images/Python.png" alt="Python logo">
-                        <div class="text">the popular programming language Python,</div>
-                    </div>
-                    <!-- Slide 4 of 8 -->
-                    <div class="mySlides fade">
-                        <img class="Slideshow_Images" src="images/C_Sharp_and_Dot_NET.png" alt="C# logo">
-                        <div class="text">C#, .NET Framework, ASP.NET, MVC, </div>
-                    </div>
-                    <!-- Slide 5 of 8 -->
-                    <div class="mySlides fade">
-                        <img class="Slideshow_Images" src="images/SQL_and_Database.jpg" alt="SQL logo"> 
-                        <div class="text">back end development, databases and SQL.</div>
-                    </div>
-                     <!-- Slide 6 of 8 -->
-                    <div class="mySlides fade">
-                        <img class="Slideshow_Images" src="images/UnitySquare.jpg" alt="Unity Logo"> 
-                        <div class="text">Experienced with game development tools such as Unity,</div>
-                    </div>
-                     <!-- Slide 7 of 8 -->
-                    <div class="mySlides fade">
-                        <img class="Slideshow_Images" src="images/UnrealSquare.jpg" alt="Unreal Logo"> 
-                        <div class="text">and the very popular Unreal Engine.</div>
-                    </div>
-                    <!-- Slide 8 of 8 -->
-                    <div class="mySlides fade">
-                        <img class="Slideshow_Images" src="images/ContactSquare.jpg" alt="Replace with a picture of your choosing"> 
-                        <div class="text"><a class="white-text" onclick="openForm()" href="#Contact">Contact me now!</a></div> 
-                    </div>
-
-                    <!-- Previous and next buttons -->
-                    <a class="Previous" onclick="plusSlides(-1)">&#10094;</a>
-                    <a class="Next" onclick="plusSlides(1)">&#10095;</a>
-                </div>
-                <br>
-                <!--Previous and Next buttons-->
-                <a class="Previous" onclick="plusSlides(-1)">&#10094;</a>
-                <a class="Next" onclick="plusSlides(1)">&#10095;</a>
-            </div>
-            <br><!--Space between Slideshow images and dots -->
-        
-            <!--Slideshow dots-->
-            <div style="text-align:center">
-                <span class="dot" onclick="currentSlide(1)"></span>
-                <span class="dot" onclick="currentSlides(2)"></span>
-                <span class="dot" onclick="currentSlides(3)"></span>
-                <span class="dot" onclick="currentSlides(4)"></span>
-                <span class="dot" onclick="currentSlides(5)"></span>
-                <span class="dot" onclick="currentSlides(6)"></span>
-                <span class="dot" onclick="currentSlides(7)"></span>
-                <span class="dot" onclick="currentSlides(8)"></span>
-            </div>
+    <!-- DB migration -->
+    <div class="entry">
+      <div class="kind">Migration</div>
+      <div>
+        <h3>MariaDB → MySQL migration</h3>
+        <p>Sole developer for a database migration across <b>two production applications</b> — adapting .NET connection strings, OpenShift secrets, stored procedures, and SSIS packages for MySQL compatibility, in coordination with the DBA and BA teams.</p>
+        <div class="metrics">
+          <div class="metric"><div class="n mono">2 apps</div><div class="l">migrated</div></div>
+          <div class="metric"><div class="n mono">4 layers</div><div class="l">config, secrets, procs, ETL</div></div>
         </div>
-    </div>
-    
-    <!--About Section-->
-    <div class="Row" id="About">
-        <!--Left Column-->
-        <div class="Column_2">
-            <img src="./images/headshot3.JPG" alt="not found">
+        <div class="stack">
+          <span class="tag">MariaDB → MySQL</span><span class="tag">.NET</span><span class="tag">OpenShift</span>
+          <span class="tag">Stored procedures</span><span class="tag">SSIS</span>
         </div>
-        <!--Right Column-->
-        <div class="Column_1">
-            <h1>Who I am.</h1>
-            <p>
-                I am a software developer who loves to assemble and build things piece by piece. I have a passion for puzzle solving and getting to the bottom of a problem. If I don't know how to do something you can be sure I'll take the time to figure it out!
-                <br>
-                <br>I am a graduate of <a href="https://www.learncodinganywhere.com" target="_blank">The Tech Academy</a>’s Software Developer Boot Camp, and trained and experienced in the following web and programming languages: HTML, CSS, JavaScript, SQL, C# and more. 
-                <br>
-                <br>View my resume here
-                <a href=https://docs.google.com/document/d/1hF3y4hAkdvIluaw3bEtWBa4IB4Cw1FdeJM_YvN1kBZs/edit?usp=sharing>Current Resume Document.</a>
-                <br>
-            </p>
+        <div class="readlinks">
+          <a href="work/database-migration.html">Read case study</a>
+          <a class="pdf" href="assets/DatabaseMigration_CaseStudy.pdf">Download PDF</a>
         </div>
+      </div>
     </div>
 
-    <!--GitHub section-->
-    <div class="Row" id="GitHub">
-        <!--Left Column-->
-        <div class="Column_1">
-            <h1>Projects</h1>
-            <p>
-                You can view my coding projects on my GitHub profile here:
-                <br>
-                <p class="center"><a href="https://github.com/CMRandall669" target="_blank">Connor Randall GitHub</a></p>
-                <p class="center"><a href="https://github.com/CMRandall669/HTML-and-CSS-Projects" target="_blank">HTML And CSS Projects</a></p> 
-                <p class="center"><a href="https://github.com/CMRandall669/JavaScript-Projects" target="_blank">JavaScript Projects</a></p> 
-                <p class="center"><a href="https://github.com/CMRandall669/C-Sharp-and-Unity-Projects" target="_blank">C# Projects</a></p>
-                <p class="center"><a href="https://github.com/CMRandall669/HTML-and-CSS-Projects/tree/main/PortfolioSite2.0" target="_blank">Portfolio 2.0 WIP (Come see the future layout)</a></p> 
-
-            </p>
+    <!-- Audit history -->
+    <div class="entry">
+      <div class="kind">Systems design</div>
+      <div>
+        <h3>Audit-history pattern — one design, every entity</h3>
+        <p>Designed a <b>standardized write-time snapshot pattern</b> applied uniformly across ~9 configuration entities — append-only history tables, each record surfacing its full version history (current values plus every prior version, by whom and when) on its own details page — with a documented recipe to extend it to new entities.</p>
+        <div class="metrics">
+          <div class="metric"><div class="n mono">~9</div><div class="l">entities, one pattern</div></div>
+          <div class="metric"><div class="n mono">Append-only</div><div class="l">immutable history</div></div>
+          <div class="metric"><div class="n mono">Per record</div><div class="l">full version history</div></div>
         </div>
-        <!--Right Column-->
-        <div class="Column_2">
-            <a href="https://github.com/CMRandall669" target="_blank"><img src="images/GitHub.png" alt="GitHub Logo"></a>
+        <div class="stack">
+          <span class="tag">C# / .NET</span><span class="tag">EF Core</span><span class="tag">MariaDB</span><span class="tag">React / TypeScript</span>
         </div>
+        <div class="readlinks">
+          <a href="work/audit-history.html">Read case study</a>
+          <a class="pdf" href="assets/AuditHistory_CaseStudy.pdf">Download PDF</a>
+        </div>
+      </div>
     </div>
-    <!--END GITHUB -->
+  </section>
 
-    <!--CONTACT SECTION-->
-    <div id="Contact">
-           <button onclick="openForm()" class="Pop_Up_Button">CONTACT ME HERE!</button>
-           <div class="form-popup" id="myForm">
-            <form action="https://formspree.io/f/mleabqwv" method="POST" class="form-container">
-                <h1>Contact</h1>
-                    <label for="name"><b>Name</b></label>
-                      <input type="text" placeholder="Type your name here" name="name" required>
-                    <label for="phone"><b>Phone</b></label>
-                      <input type="text" placeholder="Type your phone number here" name="phone">
-                    <label for="email"><b>Email</b></label>		
-                      <input type="text" placeholder="Type your email address here" name="email" required>
-                    <label for="message"><b>Message</b></label>
-                      <input type="text" placeholder="Type your message here" name="message">
-         
-                    <button type="submit" class="btn">SUBMIT</button>
-                    <button type="button" class="btn cancel" onclick="closeForm()">CLOSE</button>
-                </form>
-           </div>
-        </div>
-    <!--END CONTACT SECTION-->
+  <section id="approach" class="approach">
+    <div class="sec-head"><h2>How I work</h2><span class="rule"></span></div>
+    <p>I tend to operate as developer, analyst, and DevOps engineer at once — translating loose requirements into scoped work, then carrying it from data model to deployment. That means designing the schema and stored procedures, building the .NET APIs, workers, and RabbitMQ consumers, and delivering the React front end, plus owning the OpenShift CI/CD pipeline that ships it.</p>
+    <p>I look for <b>the architectural problem behind the ticket</b> — the client-side aggregation that should live on the server, the two verbose endpoints that should be one. And I use AI-assisted workflows (Claude Code, Copilot) to move faster, while reviewing every generated change for correctness, security, and fit before it reaches production.</p>
+  </section>
 
-        <!--FOOTER SECTION-->
-        <footer>
-            <p>
-                <p class="center">Website developed and styled by Connor Randall. Thanks for stopping by! &nbsp;</p>
-                <br>
-            </p>
-        </footer>
-        <!--END FOOTER SECTION-->
+</div>
 
-        <script src="JS/portfolio.js"></script>
-    </body>
+<footer id="contact">
+  <div class="wrap">
+    <h2>Get in touch</h2>
+    <p>Open to full-stack and senior engineering roles in the Philadelphia / South Jersey area.</p>
+    <div class="links">
+      <a href="mailto:cmrandall.business@gmail.com">cmrandall.business@gmail.com</a>
+      <a href="https://www.linkedin.com/in/connormrandall">LinkedIn</a>
+      <a href="https://github.com/YOUR-GITHUB-USERNAME">GitHub</a>
+    </div>
+    <p class="fine">Work samples describe the author&rsquo;s own contributions at an architectural level. Proprietary code, schema detail, infrastructure configuration, and customer data are intentionally excluded.</p>
+  </div>
+</footer>
+
+</body>
 </html>
