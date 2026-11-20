@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>MariaDB → MySQL Migration — Connor Randall</title>
+<title>MariaDB → MySQL Migration Connor Randall</title>
 <meta name="description" content="Owning the developer-side surface of a database platform migration across two production applications.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,15 +14,15 @@
 <div class="case">
   <div class="wrap">
     <a class="back" href="../index.html">&larr; All work</a>
-    <h1>MariaDB → MySQL migration — across two production applications</h1>
+    <h1>MariaDB → MySQL migration across two production applications</h1>
     <p class="lede">Owning the entire developer-side surface of a database platform migration spanning app config, deployment secrets, database logic, and ETL.</p>
     <div class="rolebar"><b>Role:</b> Sole internal developer, in coordination with the DBA and BA teams. &nbsp;&nbsp;<b>Scope:</b> two production applications. &nbsp;&nbsp;<b>Stack:</b> MariaDB → MySQL, .NET, OpenShift, stored procedures, SSIS.</div>
 
     <h2>Context</h2>
-    <p>Two production applications — a fleet-visibility system and an integration-monitoring platform — ran on MariaDB and needed to move to MySQL. The change wasn&rsquo;t isolated to the database engine; it rippled through every layer that touches data.</p>
+    <p>Two production applications a fleet-visibility system and an integration-monitoring platform ran on MariaDB and needed to move to MySQL. The change wasn&rsquo;t isolated to the database engine; it rippled through every layer that touches data.</p>
 
     <h2>Problem</h2>
-    <p>A platform migration like this is deceptively broad. Beyond the database itself, MariaDB and MySQL differ in ways that affect <span class="k">connection configuration, deployment secrets, database-side logic, and ETL packages</span>. Any surface left unconverted means a broken environment — and the work spanned two applications across every deployment stage.</p>
+    <p>A platform migration like this is deceptively broad. Beyond the database itself, MariaDB and MySQL differ in ways that affect <span class="k">connection configuration, deployment secrets, database-side logic, and ETL packages</span>. Any surface left unconverted means a broken environment and the work spanned two applications across every deployment stage.</p>
 
     <figure>
       <svg viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Migration surfaces across two applications">
@@ -32,9 +32,9 @@
         <text x="380" y="43" text-anchor="middle" font-family="IBM Plex Sans, Arial" font-size="14" font-weight="700" fill="#5f7fa6">→</text>
         <text x="462" y="43" text-anchor="middle" font-family="IBM Plex Sans, Arial" font-size="12" font-weight="700" fill="#2f6b7c">MySQL</text>
         <rect x="40" y="86" width="300" height="40" rx="7" fill="#fff" stroke="#c9d3e2"/>
-        <text x="190" y="111" text-anchor="middle" font-family="IBM Plex Sans, Arial" font-size="10.5" font-weight="600" fill="#1F2A44">Application A — fleet visibility</text>
+        <text x="190" y="111" text-anchor="middle" font-family="IBM Plex Sans, Arial" font-size="10.5" font-weight="600" fill="#1F2A44">Application A: fleet visibility</text>
         <rect x="420" y="86" width="300" height="40" rx="7" fill="#fff" stroke="#c9d3e2"/>
-        <text x="570" y="111" text-anchor="middle" font-family="IBM Plex Sans, Arial" font-size="10.5" font-weight="600" fill="#1F2A44">Application B — integration monitoring</text>
+        <text x="570" y="111" text-anchor="middle" font-family="IBM Plex Sans, Arial" font-size="10.5" font-weight="600" fill="#1F2A44">Application B: integration monitoring</text>
         <text x="380" y="152" text-anchor="middle" font-family="IBM Plex Sans, Arial" font-size="9" fill="#7c8493">developer-side surfaces converted in both applications</text>
         <g font-family="IBM Plex Sans, Arial">
           <rect x="40" y="166" width="165" height="104" rx="8" fill="#f6f8fc" stroke="#d7e0ec"/>
@@ -66,12 +66,12 @@
           <path d="M430,58 C560,66 645,120 645,162"/>
         </g>
       </svg>
-      <figcaption>Illustrative — application names generalized; internal configuration detail omitted.</figcaption>
+      <figcaption>Illustrative application names generalized; internal configuration detail omitted.</figcaption>
     </figure>
 
     <h2>Approach</h2>
     <ul>
-      <li>Repointed <span class="k">.NET connection strings</span> and updated <span class="k">OpenShift secrets</span> so every environment — Dev, QA, and Production — connected to MySQL with correct, consistent configuration.</li>
+      <li>Repointed <span class="k">.NET connection strings</span> and updated <span class="k">OpenShift secrets</span> so every environment Dev, QA, and Production connected to MySQL with correct, consistent configuration.</li>
       <li>Adapted <span class="k">stored procedures</span> for MySQL syntax and behavior differences, and modified <span class="k">SSIS packages</span> so existing ETL flows continued to run against the new engine.</li>
       <li>Worked alongside the <span class="k">DBA and BA teams</span> on data and validation while owning the full developer-side surface across both applications.</li>
     </ul>

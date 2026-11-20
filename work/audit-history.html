@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Audit-History Pattern — Connor Randall</title>
-<meta name="description" content="A standardized write-time snapshot pattern giving every configuration entity consistent, immutable, per-record change history — applied across ~9 entities.">
+<title>Audit-History Pattern Connor Randall</title>
+<meta name="description" content="A standardized write-time snapshot pattern giving every configuration entity consistent, immutable, per-record change history applied across ~9 entities.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -14,15 +14,15 @@
 <div class="case">
   <div class="wrap">
     <a class="back" href="../index.html">&larr; All work</a>
-    <h1>Audit-history pattern — one design, every entity</h1>
-    <p class="lede">A standardized write-time snapshot pattern that gives every configuration entity consistent, immutable, per-record change history — designed once, applied across ~9 entities.</p>
+    <h1>Audit-history pattern one design, every entity</h1>
+    <p class="lede">A standardized write-time snapshot pattern that gives every configuration entity consistent, immutable, per-record change history designed once, applied across ~9 entities.</p>
     <div class="rolebar"><b>Role:</b> Designed the pattern and applied it uniformly across the dashboard&rsquo;s configuration entities. &nbsp;&nbsp;<b>Stack:</b> C# / .NET, EF Core, MariaDB, React / TypeScript.</div>
 
     <h2>Context</h2>
-    <p>The dashboard has many configuration entities — directory monitors, message-queue file-writes, customer lists and cross-references, alert-email settings, transaction and transload configs, and more. Operations needed to see <span class="k">who changed what, and when</span>, for every one of them.</p>
+    <p>The dashboard has many configuration entities directory monitors, message-queue file-writes, customer lists and cross-references, alert-email settings, transaction and transload configs, and more. Operations needed to see <span class="k">who changed what, and when</span>, for every one of them.</p>
 
     <h2>Problem</h2>
-    <p>Change history could have been solved ad hoc, one entity at a time — leaving ~9 slightly different implementations to maintain — or pushed into <span class="k">database triggers</span>, which hide the logic in the database where it&rsquo;s hard to reason about, test, or evolve. Neither approach scales as entities are added.</p>
+    <p>Change history could have been solved ad hoc, one entity at a time leaving ~9 slightly different implementations to maintain or pushed into <span class="k">database triggers</span>, which hide the logic in the database where it&rsquo;s hard to reason about, test, or evolve. Neither approach scales as entities are added.</p>
 
     <figure>
       <svg viewBox="0 0 760 330" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Write-time snapshot lifecycle and per-record version history, replicated across entities">
@@ -52,7 +52,7 @@
           <text x="12" y="150">Each entity&rsquo;s audit history is scoped to</text>
           <text x="12" y="164">its own records. Opening a record shows</text>
           <text x="12" y="178">its current values plus an expandable</text>
-          <text x="12" y="192">accordion of every prior version —</text>
+          <text x="12" y="192">accordion of every prior version</text>
           <text x="12" y="206">who modified it, and when.</text>
         </g>
         <rect x="470" y="118" width="278" height="116" rx="8" fill="#fff" stroke="#c9d3e2"/>
@@ -75,25 +75,25 @@
           <rect x="604" y="284" width="144" height="24" rx="5" fill="#f6f8fc" stroke="#d7e0ec"/><text x="676" y="300" text-anchor="middle">… +5 more</text>
         </g>
       </svg>
-      <figcaption>Illustrative — version rows are examples; internal table and method identifiers omitted.</figcaption>
+      <figcaption>Illustrative version rows are examples; internal table and method identifiers omitted.</figcaption>
     </figure>
 
     <h2>Approach</h2>
     <ul>
-      <li>Chose an <span class="k">explicit, service-layer snapshot</span> pattern over triggers or ORM interceptors: after every create, update, or delete, the service persists the live change and then snapshots the affected rows into a paired history table — keeping the logic visible, testable, and in one place.</li>
-      <li>Made every entity follow an <span class="k">identical shape</span> — all source columns mirrored, plus AuditId, LastUpdatedAt, and LastModifiedBy — written to append-only tables that are never updated or deleted.</li>
-      <li>Surfaced the history where it&rsquo;s needed: each entity&rsquo;s details page shows the record&rsquo;s <span class="k">current values alongside an accordion of every prior version</span> — who changed it and when — backed by a typed React Query fetch. The same design is replicated per entity, always scoped to that entity&rsquo;s own records.</li>
+      <li>Chose an <span class="k">explicit, service-layer snapshot</span> pattern over triggers or ORM interceptors: after every create, update, or delete, the service persists the live change and then snapshots the affected rows into a paired history table keeping the logic visible, testable, and in one place.</li>
+      <li>Made every entity follow an <span class="k">identical shape</span> all source columns mirrored, plus AuditId, LastUpdatedAt, and LastModifiedBy written to append-only tables that are never updated or deleted.</li>
+      <li>Surfaced the history where it&rsquo;s needed: each entity&rsquo;s details page shows the record&rsquo;s <span class="k">current values alongside an accordion of every prior version</span> who changed it and when backed by a typed React Query fetch. The same design is replicated per entity, always scoped to that entity&rsquo;s own records.</li>
       <li>Wrote a <span class="k">documented recipe</span> so any developer can extend the same pattern to a new entity in a known, low-risk set of steps.</li>
     </ul>
 
     <h2>Impact</h2>
     <div class="impact">
       <div class="box"><div class="n mono">~9 entities</div><div class="l">on one identical, predictable pattern</div></div>
-      <div class="box"><div class="n mono">Append-only</div><div class="l">immutable history — nothing overwritten or lost</div></div>
+      <div class="box"><div class="n mono">Append-only</div><div class="l">immutable history nothing overwritten or lost</div></div>
       <div class="box"><div class="n mono">Per record</div><div class="l">current values plus every prior version, by whom and when</div></div>
       <div class="box"><div class="n mono">Documented</div><div class="l">a repeatable recipe to extend it to new entities</div></div>
     </div>
-    <p>The win isn&rsquo;t any single audit table — it&rsquo;s that the pattern is uniform and self-documenting. Change traceability is consistent everywhere, and adding a new entity is a known procedure rather than a fresh design problem. Standardization over cleverness.</p>
+    <p>The win isn&rsquo;t any single audit table it&rsquo;s that the pattern is uniform and self-documenting. Change traceability is consistent everywhere, and adding a new entity is a known procedure rather than a fresh design problem. Standardization over cleverness.</p>
 
     <a class="dl" href="../assets/AuditHistory_CaseStudy.pdf">Download this case study as a PDF</a>
     <p class="excluded">Prepared as a work sample. Describes the author&rsquo;s own engineering contribution at an architectural level; internal table names, method signatures, and code are intentionally excluded. Entity set and version rows are representative.</p>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Transaction API Consolidation — Connor Randall</title>
+<title>Transaction API Consolidation Connor Randall</title>
 <meta name="description" content="Replacing two parallel ~1,500-line transaction endpoints with a single direction-parameterized API roughly 90% smaller.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,21 +14,21 @@
 <div class="case">
   <div class="wrap">
     <a class="back" href="../index.html">&larr; All work</a>
-    <h1>Transaction API consolidation — two verbose endpoints into one</h1>
+    <h1>Transaction API consolidation two verbose endpoints into one</h1>
     <p class="lede">Replacing two parallel ~1,500-line transaction endpoints with a single direction-parameterized API roughly 90% smaller.</p>
     <div class="rolebar"><b>Role:</b> Sole developer. &nbsp;&nbsp;<b>Change:</b> ~3,000 lines of duplicated code → ~250 in one shared path. &nbsp;&nbsp;<b>Stack:</b> C# / .NET, REST, MariaDB.</div>
 
     <h2>Context</h2>
-    <p>The application serves transaction data for customer integrations in two directions — inbound and outbound. Retrieval was handled by two entirely separate API endpoints, one per direction, each reading from its own set of tables.</p>
+    <p>The application serves transaction data for customer integrations in two directions inbound and outbound. Retrieval was handled by two entirely separate API endpoints, one per direction, each reading from its own set of tables.</p>
 
     <h2>Problem</h2>
-    <p>Each endpoint was <span class="k">~1,500+ lines</span>, highly verbose, and largely a duplicate of the other — the same aggregation and shaping logic, pointed at different tables. Two code paths meant every change had to be made twice, every bug could hide in two places, and diagnosing a bad result meant reading through a wall of near-identical code.</p>
+    <p>Each endpoint was <span class="k">~1,500+ lines</span>, highly verbose, and largely a duplicate of the other the same aggregation and shaping logic, pointed at different tables. Two code paths meant every change had to be made twice, every bug could hide in two places, and diagnosing a bad result meant reading through a wall of near-identical code.</p>
 
     <figure>
       <svg viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Before and after code-volume comparison">
         <defs><marker id="ar" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8a94a6"/></marker></defs>
         <rect x="0" y="0" width="452" height="300" rx="10" fill="#fbf7f6" stroke="#ecdcd8"/>
-        <text x="16" y="26" font-family="IBM Plex Sans, Arial" font-size="12.5" font-weight="700" fill="#9c4b3f">BEFORE — two parallel endpoints</text>
+        <text x="16" y="26" font-family="IBM Plex Sans, Arial" font-size="12.5" font-weight="700" fill="#9c4b3f">BEFORE two parallel endpoints</text>
         <line x1="40" y1="250" x2="430" y2="250" stroke="#e3cfca" stroke-width="1"/>
         <rect x="70" y="70" width="110" height="180" rx="3" fill="#e6b7ad" stroke="#d29c90"/>
         <text x="125" y="120" text-anchor="middle" font-family="IBM Plex Sans, Arial" font-size="9" font-weight="700" fill="#7c3b30">~1,500</text>
@@ -44,7 +44,7 @@
         <text x="200" y="48" text-anchor="middle" font-family="IBM Plex Sans, Arial" font-size="8.4" fill="#9c4b3f">near-duplicate logic, different tables</text>
         <path d="M462,150 L500,150" stroke="#8a94a6" stroke-width="1.6" fill="none" marker-end="url(#ar)"/>
         <rect x="512" y="0" width="248" height="300" rx="10" fill="#f4f9f5" stroke="#d3e6d8"/>
-        <text x="528" y="26" font-family="IBM Plex Sans, Arial" font-size="12.5" font-weight="700" fill="#2f6b48">AFTER — one API</text>
+        <text x="528" y="26" font-family="IBM Plex Sans, Arial" font-size="12.5" font-weight="700" fill="#2f6b48">AFTER one API</text>
         <line x1="540" y1="250" x2="740" y2="250" stroke="#cfe3d6" stroke-width="1"/>
         <rect x="590" y="222" width="110" height="28" rx="3" fill="#9ccbaf" stroke="#6fae86"/>
         <text x="645" y="240" text-anchor="middle" font-family="IBM Plex Sans, Arial" font-size="9" font-weight="700" fill="#1f5638">~250 lines</text>
@@ -56,25 +56,25 @@
         <text x="636" y="60" text-anchor="middle" font-family="IBM Plex Sans, Arial" font-size="9.2" font-weight="700" fill="#2f6b48">~90% less code</text>
         <text x="636" y="74" text-anchor="middle" font-family="IBM Plex Sans, Arial" font-size="8" fill="#3d5648">one shared code path</text>
       </svg>
-      <figcaption>Illustrative — line counts approximate; internal identifiers omitted.</figcaption>
+      <figcaption>Illustrative line counts approximate; internal identifiers omitted.</figcaption>
     </figure>
 
     <h2>Approach</h2>
     <ul>
-      <li>Recognized that the two endpoints differed <span class="k">almost entirely in which direction and tables they targeted</span>, not in their underlying logic — the duplication was structural, not essential.</li>
+      <li>Recognized that the two endpoints differed <span class="k">almost entirely in which direction and tables they targeted</span>, not in their underlying logic the duplication was structural, not essential.</li>
       <li>Rebuilt the feature as a <span class="k">single endpoint that accepts a direction parameter</span> (Inbound, Outbound, or Both), sharing one code path and returning the same result sets as before.</li>
-      <li>Added a <span class="k">combined result</span> the previous design couldn&rsquo;t produce — inbound and outbound together — as a natural consequence of the unified path.</li>
+      <li>Added a <span class="k">combined result</span> the previous design couldn&rsquo;t produce inbound and outbound together as a natural consequence of the unified path.</li>
       <li>Collapsed ~3,000 lines of verbose, duplicated code into ~250, cutting the surface area a bug can hide in and making the feature legible at a glance.</li>
     </ul>
 
     <h2>Impact</h2>
     <div class="impact">
       <div class="box"><div class="n mono">~90%</div><div class="l">less code to read, change, and maintain</div></div>
-      <div class="box"><div class="n mono">2 → 1</div><div class="l">endpoints — a single code path, not two</div></div>
+      <div class="box"><div class="n mono">2 → 1</div><div class="l">endpoints a single code path, not two</div></div>
       <div class="box"><div class="n mono">+ Combined</div><div class="l">new inbound-plus-outbound result, previously unavailable</div></div>
       <div class="box"><div class="n mono">1 place</div><div class="l">to fix a bug or make a change, instead of two</div></div>
     </div>
-    <p>The consolidation traded a large, duplicated codebase for a small, parameterized one — less to maintain, easier to diagnose, and more capable than what it replaced.</p>
+    <p>The consolidation traded a large, duplicated codebase for a small, parameterized one less to maintain, easier to diagnose, and more capable than what it replaced.</p>
 
     <a class="dl" href="../assets/APIConsolidation_CaseStudy.pdf">Download this case study as a PDF</a>
     <p class="excluded">Prepared as a work sample. Describes the author&rsquo;s own engineering contribution at an architectural level; proprietary code, schema detail, and internal identifiers are intentionally excluded. Line counts are approximate.</p>

@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Connor Randall — Full-Stack Engineer</title>
-<meta name="description" content="Full-stack engineer who owns enterprise web systems end to end — from database schema through .NET services and messaging to React front ends.">
+<title>Connor Randall: Full Stack Engineer</title>
+<meta name="description" content="Full stack engineer who owns enterprise web systems end to end from database schema through .NET services and messaging to React front ends.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -26,7 +26,7 @@
 <div class="hero">
   <div class="wrap">
     <h1>I take features from the database to the deployed UI.</h1>
-    <p class="thesis">Full-stack engineer with ~5 years building and owning enterprise web systems end to end. I&rsquo;m not a front-end developer who tolerates a thin API &mdash; I own the whole path, so a feature ships as <b>one engineer&rsquo;s work instead of a chain of handoffs.</b></p>
+    <p class="thesis">Full stack engineer with ~5 years building and owning enterprise web systems end to end. I&rsquo;m not a front end developer who tolerates a thin API &mdash; I own the whole path, so a feature ships as <b>one engineer&rsquo;s work instead of a chain of handoffs.</b></p>
 
     <div class="path mono">
       <span class="node">MariaDB schema</span><span class="arw">&rarr;</span>
@@ -55,19 +55,19 @@
     <div class="entry">
       <div class="kind">Re-architecture</div>
       <div>
-        <h3>Customer Health — real-time integration monitoring</h3>
-        <p>Rebuilt a per-customer health dashboard from a <b>client-side bottleneck</b> — which fired a separate API call per signal for every customer and aggregated in the browser — into a <b>server-side worker</b> that precomputes health on a schedule, so the front end does a single read.</p>
+        <h3>Customer Health: Real time integration monitoring</h3>
+        <p>Rebuilt a per customer health dashboard from a <b>client side bottleneck</b> which fired a separate API call per signal for every customer and aggregated in the browser  into a <b>server side worker</b> that precomputes health on a schedule, so the front end does a single read.</p>
         <div class="metrics">
           <div class="metric"><div class="n mono">~350</div><div class="l">customers monitored</div></div>
           <div class="metric"><div class="n mono">5&nbsp;min</div><div class="l">refresh cycle</div></div>
-          <div class="metric"><div class="n mono">N&nbsp;&rarr;&nbsp;1</div><div class="l">per-customer calls &rarr; single read</div></div>
+          <div class="metric"><div class="n mono">N&nbsp;&rarr;&nbsp;1</div><div class="l">per customer calls &rarr; single read</div></div>
         </div>
         <div class="stack">
           <span class="tag">MariaDB</span><span class="tag">.NET 6 Worker</span><span class="tag">RabbitMQ</span>
           <span class="tag">REST API</span><span class="tag">React / TypeScript</span><span class="tag">EF Core</span>
         </div>
         <div class="readlinks">
-          <a href="work/customer-health.html">Read case study</a>
+          <a href="work/customer health.html">Read case study</a>
           <a class="pdf" href="assets/CustomerHealth_CaseStudy.pdf">Download PDF</a>
         </div>
       </div>
@@ -78,7 +78,7 @@
       <div class="kind">Optimization</div>
       <div>
         <h3>Transaction API consolidation</h3>
-        <p>Collapsed two parallel transaction endpoints of ~1,500 lines each into a single <b>direction-parameterized API</b> of ~250 lines returning inbound, outbound, or combined results — roughly a 90% reduction in code, and far easier to diagnose.</p>
+        <p>Collapsed two parallel transaction endpoints of ~1,500 lines each into a single <b>direction parameterized API</b> of ~250 lines returning inbound, outbound, or combined results roughly a 90% reduction in code, and far easier to diagnose.</p>
         <div class="metrics">
           <div class="metric"><div class="n mono">~90%</div><div class="l">less code</div></div>
           <div class="metric"><div class="n mono">2&nbsp;&rarr;&nbsp;1</div><div class="l">endpoints consolidated</div></div>
@@ -88,7 +88,7 @@
           <span class="tag">C# / .NET</span><span class="tag">REST API</span><span class="tag">MariaDB</span>
         </div>
         <div class="readlinks">
-          <a href="work/api-consolidation.html">Read case study</a>
+          <a href="work/api consolidation.html">Read case study</a>
           <a class="pdf" href="assets/APIConsolidation_CaseStudy.pdf">Download PDF</a>
         </div>
       </div>
@@ -99,7 +99,7 @@
       <div class="kind">Migration</div>
       <div>
         <h3>MariaDB → MySQL migration</h3>
-        <p>Sole developer for a database migration across <b>two production applications</b> — adapting .NET connection strings, OpenShift secrets, stored procedures, and SSIS packages for MySQL compatibility, in coordination with the DBA and BA teams.</p>
+        <p>Sole developer for a database migration across <b>two production applications,</b>adapting .NET connection strings, OpenShift secrets, stored procedures, and SSIS packages for MySQL compatibility, in coordination with the DBA and BA teams.</p>
         <div class="metrics">
           <div class="metric"><div class="n mono">2 apps</div><div class="l">migrated</div></div>
           <div class="metric"><div class="n mono">4 layers</div><div class="l">config, secrets, procs, ETL</div></div>
@@ -109,7 +109,7 @@
           <span class="tag">Stored procedures</span><span class="tag">SSIS</span>
         </div>
         <div class="readlinks">
-          <a href="work/database-migration.html">Read case study</a>
+          <a href="work/database migration.html">Read case study</a>
           <a class="pdf" href="assets/DatabaseMigration_CaseStudy.pdf">Download PDF</a>
         </div>
       </div>
@@ -119,18 +119,18 @@
     <div class="entry">
       <div class="kind">Systems design</div>
       <div>
-        <h3>Audit-history pattern — one design, every entity</h3>
-        <p>Designed a <b>standardized write-time snapshot pattern</b> applied uniformly across ~9 configuration entities — append-only history tables, each record surfacing its full version history (current values plus every prior version, by whom and when) on its own details page — with a documented recipe to extend it to new entities.</p>
+        <h3>Audit history pattern: One design, every entity</h3>
+        <p>Designed a <b>standardized write time snapshot pattern</b> applied uniformly across ~9 configuration entities append only history tables, each record surfacing its full version history (current values plus every prior version, by whom and when) on its own details page with a documented recipe to extend it to new entities.</p>
         <div class="metrics">
           <div class="metric"><div class="n mono">~9</div><div class="l">entities, one pattern</div></div>
-          <div class="metric"><div class="n mono">Append-only</div><div class="l">immutable history</div></div>
+          <div class="metric"><div class="n mono">Append only</div><div class="l">immutable history</div></div>
           <div class="metric"><div class="n mono">Per record</div><div class="l">full version history</div></div>
         </div>
         <div class="stack">
           <span class="tag">C# / .NET</span><span class="tag">EF Core</span><span class="tag">MariaDB</span><span class="tag">React / TypeScript</span>
         </div>
         <div class="readlinks">
-          <a href="work/audit-history.html">Read case study</a>
+          <a href="work/audit history.html">Read case study</a>
           <a class="pdf" href="assets/AuditHistory_CaseStudy.pdf">Download PDF</a>
         </div>
       </div>
@@ -139,8 +139,8 @@
 
   <section id="approach" class="approach">
     <div class="sec-head"><h2>How I work</h2><span class="rule"></span></div>
-    <p>I tend to operate as developer, analyst, and DevOps engineer at once — translating loose requirements into scoped work, then carrying it from data model to deployment. That means designing the schema and stored procedures, building the .NET APIs, workers, and RabbitMQ consumers, and delivering the React front end, plus owning the OpenShift CI/CD pipeline that ships it.</p>
-    <p>I look for <b>the architectural problem behind the ticket</b> — the client-side aggregation that should live on the server, the two verbose endpoints that should be one. And I implement AI-assisted workflows (Claude Code, Copilot) to move faster reducing the tedium of boilerplate setup and troubleshooting, while reviewing every generated change for correctness, security, and fit before it reaches production.</p>
+    <p>I tend to operate as developer, analyst, and DevOps engineer at once translating loose requirements into scoped work, then carrying it from data model to deployment. That means designing the schema and stored procedures, building the .NET APIs, workers, and RabbitMQ consumers, and delivering the React front end, plus owning the OpenShift CI/CD pipeline that ships it.</p>
+    <p>I look for <b>the architectural problem behind the ticket,</b> the client side aggregation that should live on the server, the two verbose endpoints that should be one. And I implement AI assisted workflows (Claude Code, Copilot) to move faster reducing the tedium of boilerplate setup and troubleshooting, while reviewing every generated change for correctness, security, and fit before it reaches production.</p>
   </section>
 
 </div>
@@ -148,7 +148,7 @@
 <footer id="contact">
   <div class="wrap">
     <h2>Get in touch</h2>
-    <p>Open to full-stack level III and senior engineering roles in the Philadelphia / South Jersey area.</p>
+    <p>Open to full stack level III and senior engineering roles in the Philadelphia / South Jersey area.</p>
     <div class="links">
       <a href="mailto:cmrandall.business@gmail.com">cmrandall.business@gmail.com</a>
       <a href="https://www.linkedin.com/in/connormrandall">LinkedIn</a>
